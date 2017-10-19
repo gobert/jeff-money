@@ -1,0 +1,8 @@
+language: ruby
+rvm: 2.4.1
+install: bundle install
+script:
+- bundle exec rspec -- spec
+- bundle exec rubocop -c .rubocop-validation.yml -- .
+after_script:
+- bundle exec rspec && CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN bundle exec codeclimate-test-reporter

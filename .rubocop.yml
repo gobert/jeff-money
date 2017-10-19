@@ -1,0 +1,5 @@
+# Rubocop file for the IDE
+# It's stricter than the one for validation: advices are display on the IDE,
+# but this strictness have no time impact on validation
+
+require: rubocop-rspec
