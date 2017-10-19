@@ -11,7 +11,7 @@ module JeffMoney
       end
     end
 
-    attr_reader :amount, :currency
+    attr_accessor :amount, :currency
 
     def initialize(amount, currency)
       raise UnkownCurrency if !valid_currency?(currency)
@@ -29,6 +29,32 @@ module JeffMoney
 
       Money.new(new_amount, new_currency)
     end
+
+    def +(other)
+      self.amount += other.convert_to(currency).amount
+
+      self
+    end
+
+    def -(other)
+      self.amount -= other.convert_to(currency).amount
+
+      self
+    end
+
+    # rubocop:disable Naming/BinaryOperatorParameterName
+    def *(coefficient)
+      self.amount *= coefficient
+
+      self
+    end
+
+    def /(coefficient)
+      self.amount = self.amount.to_f / coefficient
+
+      self
+    end
+    # rubocop:enable Naming/BinaryOperatorParameterName
 
     def <=>(other)
       rounded_amount = amount.to_f.round(2)

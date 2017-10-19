@@ -13,6 +13,34 @@ describe JeffMoney do
     end
   end
 
+  describe '+' do
+    it 'sums money of different currency' do
+      expect(fifty_eur + twenty_dollars)
+        .to eq(JeffMoney::Money.new(68.02, 'EUR'))
+    end
+  end
+
+  describe '-' do
+    it 'subtracts money of different currency' do
+      expect(fifty_eur - twenty_dollars)
+        .to eq(JeffMoney::Money.new(31.98, 'EUR'))
+    end
+  end
+
+  describe '*' do
+    it 'multiplies money by a factor' do
+      expect(twenty_dollars * 3)
+        .to eq(JeffMoney::Money.new(60, 'USD'))
+    end
+  end
+
+  describe '/' do
+    it 'divides money by a factor' do
+      expect(fifty_eur / 2)
+        .to eq(JeffMoney::Money.new(25, 'EUR'))
+    end
+  end
+
   describe '==' do
     context 'having same currency' do
       context 'comparing with the same amount' do

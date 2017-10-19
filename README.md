@@ -28,5 +28,24 @@ Convert to a different currency
 fifty_eur.convert_to('USD') # => 55.50 USD
 ```
 
+Comparisons (also in different currencies):
+```ruby
+twenty_dollars == Money.new(20, 'USD') # => true
+twenty_dollars == Money.new(30, 'USD') # => false
+
+fifty_eur_in_usd = fifty_eur.convert_to('USD')
+fifty_eur_in_usd == fifty_eur          # => true
+
+twenty_dollars > Money.new(5, 'USD')   # => true
+twenty_dollars < fifty_eur             # => true
+```
+
+ Arithmetics:
+ ```ruby
+fifty_eur + twenty_dollars # => 68.02 EUR
+fifty_eur - twenty_dollars # => 31.98 EUR
+fifty_eur / 2              # => 25 EUR
+twenty_dollars * 3         # => 60 USD
+```
 # Contribute
 See [CONTRIBUTING.md](CONTRIBUTING.md)
