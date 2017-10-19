@@ -62,6 +62,10 @@ module JeffMoney
       self
     end
 
+    def inspect
+      "#{format('%.2f', amount)} #{currency}"
+    end
+
     def <=>(other)
       rounded_amount = amount.to_f.round(2)
       other_rounded_amount = other.convert_to(currency).amount.to_f.round(2)

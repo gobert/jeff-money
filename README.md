@@ -23,6 +23,13 @@ Instantiate new objects:
 fifty_eur = Money.new(50, 'EUR')
 ```
 
+Get amount and currency:
+```ruby
+fifty_eur.amount   # => 50
+fifty_eur.currency # => "EUR"
+fifty_eur.inspect  # => "50.00 EUR"
+```
+
 Convert to a different currency
 ```ruby
 fifty_eur.convert_to('USD') # => 55.50 USD

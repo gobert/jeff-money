@@ -13,6 +13,12 @@ describe JeffMoney do
     end
   end
 
+  describe '#inspect' do
+    it 'humanize the output' do
+      expect(fifty_eur.inspect).to eq('50.00 EUR')
+    end
+  end
+
   describe '+' do
     it 'sums money of different currency' do
       expect(fifty_eur + twenty_dollars)
