@@ -1,5 +1,7 @@
 module JeffMoney
   class Money
+    include Comparable
+
     class << self
       attr_reader :conversions, :master_currency
 
@@ -26,6 +28,19 @@ module JeffMoney
                    self.class.conversions[new_currency]
 
       Money.new(new_amount, new_currency)
+    end
+
+    def <=>(other)
+      rounded_amount = amount.to_f.round(2)
+      other_rounded_amount = other.convert_to(currency).amount.to_f.round(2)
+
+      if rounded_amount > other_rounded_amount
+        1
+      elsif rounded_amount < other_rounded_amount
+        -1
+      else
+        0
+      end
     end
 
     private

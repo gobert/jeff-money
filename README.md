@@ -17,10 +17,12 @@ Money.conversion_rates('EUR', {
   'Bitcoin' => 0.0047
 })
 ```
+
 Instantiate new objects:
 ```ruby
 fifty_eur = Money.new(50, 'EUR')
 ```
+
 Convert to a different currency
 ```ruby
 fifty_eur.convert_to('USD') # => 55.50 USD
