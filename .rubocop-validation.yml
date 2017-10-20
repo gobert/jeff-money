@@ -3,9 +3,6 @@
 # advices
 inherit_from: ./.rubocop.yml
 
-Style/Documentation:
-  Enabled: false
-
 # Disable code quality indicators
 # We should use another tool for that
 Metrics/BlockLength:

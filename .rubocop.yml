@@ -3,3 +3,9 @@
 # but this strictness have no time impact on validation
 
 require: rubocop-rspec
+
+Style/Documentation:
+  Enabled: false
+
+Style/NegatedIf:
+  Enabled: false
