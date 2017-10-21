@@ -8,6 +8,13 @@
 
 Gem that convert currency to each other.
 
+# Installation
+Add this line to our Gemfile
+```
+gem 'jeff-money', git: 'https://github.com/gobert/jeff-money'
+```
+and then install it using bundle: ```bundle install```
+
 # Usage
 First you need to prepare the gem:
 ```ruby
