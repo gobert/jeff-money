@@ -63,7 +63,7 @@ module JeffMoney
     end
 
     def inspect
-      "#{format('%.2f', amount)} #{currency}"
+      "#{JeffMoney::Helpers.number_with_precision(amount, 2)} #{currency}"
     end
 
     def <=>(other)

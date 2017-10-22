@@ -53,6 +53,44 @@ describe JeffMoney::Money do
     end
   end
 
+  describe '#inspect' do
+    let(:twenty_eur) { described_class.new(20.00, 'EUR') }
+
+    context 'rounding 19.994 EUR' do
+      it 'returns 19.99 EUR' do
+        money = twenty_eur - described_class.new(0.006, 'EUR')
+        expect(money.inspect).to eq('19.99 EUR')
+      end
+    end
+
+    context 'rounding 19.995 EUR' do
+      it 'returns 20.00 EUR' do
+        money = twenty_eur - described_class.new(0.005, 'EUR')
+        expect(money.inspect).to eq('20.00 EUR')
+      end
+    end
+
+    context 'rounding 20.000 EUR' do
+      it 'returns 20.00 EUR' do
+        expect(described_class.new(20.000, 'EUR').inspect).to eq('20.00 EUR')
+      end
+    end
+
+    context 'rounding 20.004 EUR' do
+      it 'returns 20.00 EUR' do
+        money = twenty_eur + described_class.new(0.004, 'EUR')
+        expect(money.inspect).to eq('20.00 EUR')
+      end
+    end
+
+    context 'rounding 20.005 EUR' do
+      it 'returns 20.01 EUR' do
+        money = twenty_eur + described_class.new(0.005, 'EUR')
+        expect(money.inspect).to eq('20.01 EUR')
+      end
+    end
+  end
+
   describe '#==' do
     let(:twenty_eur) { described_class.new(20.00, 'EUR') }
     let(:border_inf) { described_class.new(0.004, 'EUR') }
