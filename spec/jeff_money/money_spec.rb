@@ -52,4 +52,34 @@ describe JeffMoney::Money do
       end
     end
   end
+
+  describe '#==' do
+    let(:twenty_eur) { described_class.new(20.00, 'EUR') }
+    let(:border_inf) { described_class.new(0.004, 'EUR') }
+    let(:border_sup) { described_class.new(1, 'EUR') }
+
+    context 'comparing with +0.004' do
+      it 'is equal' do
+        expect(twenty_eur == border_inf + twenty_eur).to eq(true)
+      end
+    end
+
+    context 'comparing with +0.005' do
+      it 'is not equal' do
+        expect(twenty_eur == border_sup + twenty_eur).to eq(false)
+      end
+    end
+
+    context 'comparing with -0.004' do
+      it 'is equal' do
+        expect(twenty_eur == -border_inf + twenty_eur).to eq(true)
+      end
+    end
+
+    context 'comparing with -0.005' do
+      it 'is not equal' do
+        expect(twenty_eur == - border_sup + twenty_eur).to eq(false)
+      end
+    end
+  end
 end

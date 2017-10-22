@@ -56,6 +56,12 @@ module JeffMoney
     end
     # rubocop:enable Naming/BinaryOperatorParameterName
 
+    def -@
+      self.amount = -self.amount
+
+      self
+    end
+
     def <=>(other)
       rounded_amount = amount.to_f.round(2)
       other_rounded_amount = other.convert_to(currency).amount.to_f.round(2)
