@@ -13,7 +13,9 @@ Add this line to our Gemfile
 ```
 gem 'jeff-money', git: 'https://github.com/gobert/jeff-money'
 ```
-and then install it using bundle: ```bundle install```
+and then install it using bundle: ```bundle install```.
+
+The gem has been tested against ruby 2.4.1 (MRI).
 
 # Usage
 First you need to prepare the gem:
